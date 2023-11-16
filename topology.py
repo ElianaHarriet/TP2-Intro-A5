@@ -1,6 +1,5 @@
 from mininet.topo import Topo
 
-
 class MyTopology(Topo):
     
     def __init__(self, n):
