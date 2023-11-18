@@ -38,12 +38,13 @@ class Firewall(EventMixin):
             
 
     def _handle_ConnectionUp(self, event):
-        print()
+        log.debug("ConnectionUp: %s", dpidToStr(event.dpid))
         if event.dpid == self.firewall_switch:
             log.debug("Firewall Switch Connected: %s", dpidToStr(event.dpid))
-            log.debug("Installing rules... %s",self.firewall_rules)
+            # log.debug("Firewall Switch Connected: %s", dpidToStr(event.dpid))
+            # log.debug("Installing rules... %s",self.firewall_rules)
             for dict_rule in self.firewall_rules:
-                log.debug("for rule ::::: %s", dict_rule)
+                # log.debug("for rule ::::: %s", dict_rule)
                 self._install_rule(event, dict_rule)
     
     def _install_rule(self, event, rule):
@@ -54,14 +55,12 @@ class Firewall(EventMixin):
         block_match.dl_type = pkt.ethernet.IP_TYPE
         msg = of.ofp_flow_mod()
         msg.match = block_match 
-
-        log.debug("sending msg %s", msg)
         event.connection.send(msg)
     
     def _add_rule(self, block_match, rule):
         log.debug("Adding rule: %s", rule)
         for key in rule.keys():
-            log.debug(f"Handling key: {key} and value {rule[key]}")
+            # log.debug(f"Handling key: {key} and value {rule[key]}")
             self.switch.get(key, lambda x, _y, _z: print(f"Unhandled key: {x} with block_match: {block_match}"))(rule[key],key, block_match)
 
 
