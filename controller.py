@@ -1,14 +1,16 @@
-from pox.pox.core import core
-import pox.pox.openflow.libopenflow_01 as of
-from pox.pox.lib.revent import * 
-from pox.pox.lib.util import dpidToStr 
-from pox.pox.lib.addresses import EthAddr 
-from collections import namedtuple 
-import os 
+from pox.core import core
+import pox.openflow.libopenflow_01 as of
+from pox.lib.revent import *
+from pox.lib.util import dpidToStr
+from pox.lib.addresses import EthAddr
+from collections import namedtuple
+import os
 import yaml
-import pox.lib.packet as pkt
+
 from pox.lib.addresses import IPAddr
-log = core.getLogger() 
+import pox.lib.packet as pkt
+
+log = core.getLogger()
 
 class Firewall(EventMixin):
     def __init__(self):
@@ -23,13 +25,12 @@ class Firewall(EventMixin):
         log.debug("Firewall Module Enabled")
 
         self.switch = {
-                'dst_port': handle_dst_src_port,
-                'src_port': handle_dst_src_port,
-                'net_protocol': handle_net_protocol,
-                'src_mac': handle_src_mac,
-                'dst_mac': handle_dst_mac,
-                'src_ip': handle_dst_src_ip,
-
+                'dst_port': self.handle_dst_src_port,
+                'src_port': self.handle_dst_src_port,
+                'net_protocol': self.handle_net_protocol,
+                'src_mac': self.handle_dst_src_mac,
+                'dst_mac': self.handle_dst_src_mac,
+                'src_ip': self.handle_dst_src_ip,
         }
             
    
@@ -44,10 +45,11 @@ class Firewall(EventMixin):
 
         block_match = of.ofp_match() # It’s used to create a match object that defines the criteria for OpenFlow rules.
         self._add_rule(block_match, rule) # Adds the rule to the block_match object.
-
+        
+        block_match.dl_type = pkt.ethernet.IP_TYPE
         msg = of.ofp_flow_mod()
-        msg.match = block_match # Assigns the customized block_match to the match field of a flow mode message.
-                                #  This message is then sent to the switch to update its flow table.
+        msg.match = block_match 
+
         event.connection.send(msg)
     
     def _add_rule(self, block_match, rule):
@@ -89,11 +91,6 @@ class Firewall(EventMixin):
 
         
     
-    def launch(): 
-        # Starting the Firewall module
-        core.registerNew(Firewall)
-
-
-def main():
-    firewall = Firewall()
-    firewall._handle_connection_up()
+def launch(): 
+    # Starting the Firewall module
+    core.registerNew(Firewall)
