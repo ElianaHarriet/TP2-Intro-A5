@@ -1,17 +1,4 @@
-"""
-Se propone desarrollar una topología parametrizable sobre la cual probaremos diferentes
-funcionalidades que nos brinda la tecnología OpenFlow.
-Se tendrá una cantidad de switches variable, formando una cadena, en cuyos extremos se
-tienen dos hosts. La topología debe recibir por parámetro la cantidad de switches.
-Se debe considerar que el controlador a utilizar para esta simulación, si bien no posee
-una gran complejidad, debe presentar las siguientes características:
-- Los switches deben aprender automáticamente la topología (l2 learning).
-- Se deben agregar los logs necesarios al controlador para poder verificar su funcionamiento,
-  y poder contrastarlo con wireshark. 
-"""
-
 from mininet.topo import Topo
-
 
 class MyTopology(Topo):
     

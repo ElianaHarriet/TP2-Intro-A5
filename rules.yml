@@ -1,0 +1,25 @@
+firewall_switch: 1
+rules:
+  - description: Block destination port 80 messages with TCP
+    rule:
+      net_protocol: TCP
+      dst_port: 80
+      ip_type: ipv4
+  - description: Block destination port 80 messages with UDP
+    rule:
+      net_protocol: UDP
+      dst_port: 80
+      ip_type: ipv4
+  - description: Block host 1 ('Left_1') messages which has destination port 5001 and uses UDP protocol
+    rule:
+      dst_port: 5001
+      net_protocol: UDP
+      src_mac: 00:00:00:00:00:01
+  - description: Block messages from host 2 ('Left_2') to host 4 ('Right_2')
+    rule:
+      src_mac: 00:00:00:00:00:02
+      dst_mac: 00:00:00:00:00:04
+  - description: Block messages from host 4 ('Right_2') to host 2 ('Left_2')
+    rule:
+      src_mac: 00:00:00:00:00:04
+      dst_mac: 00:00:00:00:00:02
