@@ -27,5 +27,12 @@ class MyTopology(Topo):
 
         self.addLink(hostR1, switch)
         self.addLink(hostR2, switch)
+    
+    def neighbors(self, switch):
+        """
+        Returns the neighbors of a switch.
+        """
+        return list(self.g.adj[switch])
+
         
 topos = {"MyTopo": MyTopology} 
