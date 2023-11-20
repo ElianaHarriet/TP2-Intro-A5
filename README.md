@@ -12,7 +12,9 @@ TP N°2: Software-Defined Networks - OpenFlow
 
 ## Dependencias
 
-Mininet & Openswitch ((http://mininet.org/download/))
+Python  (https://www.python.org/downloads/)
+
+Mininet & Openswitch (http://mininet.org/download/)
 
 ```bash
 sudo apt-get install mininet
@@ -31,6 +33,24 @@ sudo apt install xterm
 ```
 
 ## Ejecución
+Antes de probar la topología debemos asegurarno de levantar el controlador con el siguiente comando
+
+```bash
+python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning controller
+```
+
+Luego si podremos correr nuestra topologia:
+
+```bash
+sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --controller remote
+```
+
+## Tests
+
+Iperf
+
+
+
 
 
 
