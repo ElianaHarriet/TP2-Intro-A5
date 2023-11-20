@@ -69,6 +69,7 @@ Validamos en la interfaz del host 3 que no arribó ningun mensaje.
 
 
 <br>
+
 ### Los mensajes que provienen del host1 tienen puerto destino 5001 y utilizan UDP son filtrados por el firewall.
 
 En la interfaz del host 3 indicamos que queremos iniciar un servidor UDP que escuche en el puerto 5001.
@@ -83,6 +84,7 @@ Validamos en la interfaz del host 3 que no arribó ningun mensaje.
 
 
 <br>
+
 ### Los mensajes entre los hosts 2 y 4 son filtrados por el firewall.
 
 En la interfaz del host 2 indicamos que queremos iniciar un servidor UDP que escuche en el puerto 8080.
@@ -106,18 +108,3 @@ iperf -u -c 10.0.0.4 -p 8080
 ```
 
 Validamos en la interfaz del host 4 que no arribó ningun mensaje.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
