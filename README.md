@@ -47,11 +47,9 @@ sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --
 
 ## Tests
 
-Iperf
+### Los mensajes hacia el puerto 80 son filtradas por el firewall
 
-La primer prueba consiste en validar que las peticiones hacia el puerto 80 son filtradas por el firewall
-
-### Para establecer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
+Para establecer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
 
 En la interfaz del host 3 indicamos que queremos inciar un servidor que escuche en el puerto 80
 ```bash
@@ -62,6 +60,19 @@ En la interfaz del host1 indicamos que queremos iniciar un cliente y hacer un re
 iperf -c 10.0.0.3 -p 80
 ```
 Validamos que a la interfaz del host 3 no arribo ningun mensaje.
+
+
+### Los mensajes que provienen del host1, tienen puerto destino 5001 y utilizan UDP son filtrados por el firewall.
+
+
+
+
+
+
+
+
+
+
 
 
 
