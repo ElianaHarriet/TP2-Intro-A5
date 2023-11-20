@@ -45,7 +45,13 @@ Luego si podremos correr nuestra topologia:
 sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --controller remote
 ```
 
-## Tests
+## Tests Topología
+
+```bash
+python3 -m unittest tests.py
+```
+
+## Tests Firewall
 
 ### Los mensajes hacia el puerto 80 son filtrados por el firewall
 
