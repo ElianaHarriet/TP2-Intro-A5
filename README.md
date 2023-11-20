@@ -47,27 +47,57 @@ sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --
 
 ## Tests
 
-### Los mensajes hacia el puerto 80 son filtradas por el firewall
+### Los mensajes hacia el puerto 80 son filtrados por el firewall
 
-Para establecer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
+Para establecer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3.
 
-En la interfaz del host 3 indicamos que queremos inciar un servidor que escuche en el puerto 80
+En la interfaz del host 3 indicamos que queremos inciar un servidor que escuche en el puerto 80.
 ```bash
 iperf -s -p 80
 ```
-En la interfaz del host1 indicamos que queremos iniciar un cliente y hacer un request hacia el host 3 hacia el puerto 80
+En la interfaz del host 1 indicamos que queremos iniciar un cliente y hacer un request hacia el host 3 hacia el puerto 80.
 ```bash
 iperf -c 10.0.0.3 -p 80
 ```
-Validamos que a la interfaz del host 3 no arribo ningun mensaje.
+Validamos en la interfaz del host 3 que no arribó ningun mensaje.
 
 
 ### Los mensajes que provienen del host1, tienen puerto destino 5001 y utilizan UDP son filtrados por el firewall.
 
+En la interfaz del host 3 indicamos que queremos iniciar un servidor UDP que escuche en el puerto 5001.
+```bash
+iperf -u -s -p 5001
+```
+En la interfaz del host 1 indicamos que queremos inciar un cliente que envie un paquete UDP al puerto 5001 del host3.
+```bash
+iperf -u -c 10.0.0.3 -p 5001
+```
+Validamos en la interfaz del host 3 que no arribó ningun mensaje.
 
 
+### Los mensajes entre los hosts 2 y 4 son filtrados por el firewall.
 
+En la interfaz del host 2 indicamos que queremos iniciar un servidor UDP que escuche en el puerto 8080.
+```bash
+iperf -u -s -p 8080
+```
+En la interfaz del host 4 indicamos que queremos inicar un cliente que envie un paquete UDP hacia el puerto 8080 del host 2.
+```bash
+iperf -u -c 10.0.0.2 -p 8080
+```
 
+Validamos en la interfaz del host 2 que no arribó ningun mensaje.
+
+En la interfaz del host 4 indicamos que queremos iniciar un servidor UDP que escuche en el puerto 8080.
+```bash
+iperf -u -s -p 8080
+```
+En la interfaz del host 2 indicamos que queremos inicar un cliente que envie un paquete UDP hacia el puerto 8080 del host 4.
+```bash
+iperf -u -c 10.0.0.4 -p 8080
+```
+
+Validamos en la interfaz del host 4 que no arribó ningun mensaje.
 
 
 
