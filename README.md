@@ -47,6 +47,7 @@ sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --
 
 ## Tests Topología
 
+Estos tests validan que las cantidades de hosts, switches y enlaces sean las correctas dados los parametros de entrada.
 ```bash
 python3 -m unittest tests.py
 ```
