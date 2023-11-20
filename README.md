@@ -51,7 +51,7 @@ Iperf
 
 La primer prueba consiste en validar que las peticiones hacia el puerto 80 son filtradas por el firewall
 
-###Para estableceer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
+### Para establecer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
 
 En la interfaz del host 3 indicamos que queremos inciar un servidor que escuche en el puerto 80
 ```bash
