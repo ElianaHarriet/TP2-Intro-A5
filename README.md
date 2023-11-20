@@ -33,7 +33,7 @@ sudo apt install xterm
 ```
 
 ## Ejecución
-Antes de probar la topología debemos asegurarno de levantar el controlador con el siguiente comando
+Antes de probar la topología debemos asegurarnos de levantar el controlador con el siguiente comando
 
 ```bash
 python3 pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning controller
@@ -48,6 +48,23 @@ sudo mn --custom ./topology.py --topo MyTopo,n=2 --mac --arp -x --switch ovsk --
 ## Tests
 
 Iperf
+
+La primer prueba consiste en validar que las peticiones hacia el puerto 80 son filtradas por el firewall
+
+###Para estableceer una conexión TCP sobre el puerto 80 desde el host1 hacia el host3
+
+En la interfaz del host 3 indicamos que queremos inciar un servidor que escuche en el puerto 80
+```bash
+iperf -s -p 80
+```
+En la interfaz del host1 indicamos que queremos iniciar un cliente y hacer un request hacia el host 3 hacia el puerto 80
+```bash
+iperf -c 10.0.0.3 -p 80
+```
+Validamos que a la interfaz del host 3 no arribo ningun mensaje.
+
+
+
 
 
 
