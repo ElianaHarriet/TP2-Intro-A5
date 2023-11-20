@@ -8,3 +8,30 @@ TP N°2: Software-Defined Networks - OpenFlow
 - [108026 - Tomas Emanuel](https://github.com/tomasemanuel)
 - [108193 - Tomás González](https://github.com/tomasgonzz)
 - [101640 - Ramos Federico](https://github.com/RamosFe)
+
+
+## Dependencias
+
+Mininet & Openswitch ((http://mininet.org/download/))
+
+```bash
+sudo apt-get install mininet
+```
+```bash
+sudo apt-get install openvswitch-switch
+```
+```bash
+sudo service openvswitch-switch start
+```
+
+Xterm
+
+```bash
+sudo apt install xterm
+```
+
+## Ejecución
+
+
+
+
