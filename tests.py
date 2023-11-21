@@ -9,6 +9,7 @@ class TestTopology(unittest.TestCase):
             self.assertEqual(len(topo.hosts()), 4)
             self.assertEqual(len(topo.switches()), i)
             self.assertEqual(len(topo.links()), i + 3)
+    
 
 if __name__ == '__main__':
     unittest.main()
