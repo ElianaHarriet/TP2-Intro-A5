@@ -1,6 +1,13 @@
 # TP2-Intro-A5
 TP N°2: Software-Defined Networks - OpenFlow
 
+El presente trabajo tiene como objetivo el diseño de una red virtual con nuestra propia
+topologoia utilizando la herramienta Mininet. Ademas se estableceran politicas propias de
+envio y clasificacion de paquetes. Para llevar a cabo esto ultimo utilizaremos el controlador
+POX proporcionado por OpenFlow para gestionar y controlar el flujo de datos en la red.
+Como parte del proceso de validacion y evaluacion de la red diseñada, se realizaran pruebas
+utilizando las herramientas Iperf y Wireshark.
+
 ## Integrantes
 - [105103 - Franco Gazzola](https://github.com/franco-jyq)
 - [106010 - Federico Martín Valsagna Indri](https://github.com/FedericoValsagna)
